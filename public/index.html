@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../assets/writeright-logo.svg" type="image/svg+xml">
+    <title>WriteRight - Real-Time Grammar & Fluency Assistant</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-pen-fancy logo-icon"></i>
+                <span>WriteRight</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#demo" class="nav-link">Try Now</a>
+                <a href="#feedback" class="nav-link">Feedback</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-icon">
+                <i class="fas fa-spell-check"></i>
+            </div>
+            <h1 class="hero-title">
+                <span class="gradient-text">WriteRight</span>
+            </h1>
+            <p class="hero-subtitle">Your free, no-database grammar & fluency corrector</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" id="addToBrowser">
+                    <i class="fas fa-download"></i>
+                    Add to Browser
+                </button>
+                <a href="#features" class="btn btn-secondary">
+                    <i class="fas fa-star"></i>
+                    Explore Features
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="floating-card">
+                <div class="card-content">
+                    <i class="fas fa-check-circle text-success"></i>
+                    <span>Grammar Perfect!</span>
+                </div>
+            </div>
+            <div class="floating-card card-2">
+                <div class="card-content">
+                    <i class="fas fa-magic text-primary"></i>
+                    <span>Fluency Enhanced</span>
+                </div>
+            </div>
+            <div class="floating-card card-3">
+                <div class="card-content">
+                    <i class="fas fa-bolt text-warning"></i>
+                    <span>Real-time Check</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-rocket"></i>
+                Key Features
+            </h2>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-spell-check"></i>
+                    </div>
+                    <h3>Real-time Correction</h3>
+                    <p>Grammar, punctuation, and spelling correction as you type</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Fluent Rephrasing</h3>
+                    <p>Smart suggestions to make your writing more fluent and natural</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Universal Compatibility</h3>
+                    <p>Works across all websites - Gmail, Docs, Social Media, and more</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-window-maximize"></i>
+                    </div>
+                    <h3>Popup Tool</h3>
+                    <p>Dedicated popup interface for comprehensive text corrections</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Privacy First</h3>
+                    <p>No database, no sign-up required - your privacy is protected</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>One-click Export</h3>
+                    <p>Download your corrected text instantly with a single click</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="demo">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-play-circle"></i>
+                Try WriteRight Now
+            </h2>
+            <div class="demo-container">
+                <div class="demo-input">
+                    <textarea 
+                        id="demoText" 
+                        placeholder="Type or paste your sentence here..."
+                        rows="6"
+                    ></textarea>
+                    <button id="demoCheck" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                        Check Fluency & Grammar
+                    </button>
+                </div>
+                <div class="demo-output">
+                    <div id="demoResult" class="result-container">
+                        <div class="placeholder-text">
+                            <i class="fas fa-lightbulb"></i>
+                            <p>Your corrections will appear here</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="10000">0</div>
+                    <div class="stat-label">Words Corrected</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="500">0</div>
+                    <div class="stat-label">Happy Users</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="99">0</div>
+                    <div class="stat-label">% Accuracy</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="24">0</div>
+                    <div class="stat-label">Languages Supported</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section id="feedback" class="feedback">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-comments"></i>
+                We Value Your Feedback
+            </h2>
+            <div class="feedback-container">
+                <div class="feedback-form">
+                    <form action="mailto:youremail@example.com" method="POST" enctype="text/plain">
+                        <div class="form-group">
+                            <label for="feedbackBox">Share your thoughts, suggestions, or report bugs:</label>
+                            <textarea 
+                                name="feedback" 
+                                id="feedbackBox" 
+                                placeholder="Write your feedback..."
+                                rows="5"
+                                required
+                            ></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Feedback via Email
+                        </button>
+                    </form>
+                </div>
+                <div class="feedback-info">
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Direct Contact</h3>
+                        <p>Send us your feedback directly via email and we'll get back to you soon.</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-bug"></i>
+                        <h3>Bug Reports</h3>
+                        <p>Found a bug? Let us know and help us improve WriteRight for everyone.</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Feature Requests</h3>
+                        <p>Have ideas for new features? We'd love to hear your suggestions!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-pen-fancy"></i>
+                    <span>WriteRight</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#features">Features</a>
+                    <a href="#demo">Demo</a>
+                    <a href="#feedback">Feedback</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/OrbitWork" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Powered by <a href="https://languagetool.org" target="_blank">LanguageTool</a> | Built by OrbitWorks</p>
+                <p>&copy; 2025 WriteRight. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner">
+            <i class="fas fa-sync-alt"></i>
+        </div>
+        <p>Checking your text...</p>
+    </div>
+
+    <!-- Install Modal -->
+    <div id="installModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <i class="fas fa-download"></i>
+                <h2>Install WriteRight Extension</h2>
+            </div>
+            <div class="modal-body">
+                <p>Follow these simple steps to add WriteRight to your browser:</p>
+                <div class="install-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Download Extension</h4>
+                            <p>Download the WriteRight extension package</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Open Extensions</h4>
+                            <p>Go to chrome://extensions/ in your browser</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Enable Developer Mode</h4>
+                            <p>Toggle "Developer mode" in the top right</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Load Extension</h4>
+                            <p>Click "Load unpacked" and select the WriteRight folder</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="browser-support">
+                    <h4>Supported Browsers:</h4>
+                    <div class="browsers">
+                        <i class="fab fa-chrome" title="Chrome"></i>
+                        <i class="fab fa-edge" title="Edge"></i>
+                        <i class="fab fa-firefox" title="Firefox"></i>
+                        <i class="fab fa-safari" title="Safari"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary">Download Now</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
