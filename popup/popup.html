@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WriteRight - Grammar & Fluency Assistant</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body style="opacity: 1; visibility: visible;">
+  <!-- Header Section -->
+  <header class="popup-header">
+    <div class="header-content">
+      <div class="logo-section">
+        <div class="logo-icon">✍️</div>
+        <div class="logo-text">
+          <h1>WriteRight</h1>
+          <p>Grammar & Fluency Assistant</p>
+        </div>
+      </div>
+      <div class="status-indicator" id="statusIndicator">
+        <div class="status-dot"></div>
+        <span class="status-text">Active</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="popup-main">
+    <!-- Quick Stats -->
+    <section class="stats-section">
+      <div class="stat-card">
+        <div class="stat-icon">📝</div>
+        <div class="stat-info">
+          <span class="stat-number" id="checksToday">0</span>
+          <span class="stat-label">Checks Today</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">✨</div>
+        <div class="stat-info">
+          <span class="stat-number" id="fixesApplied">0</span>
+          <span class="stat-label">Fixes Applied</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Text Checker -->
+    <section class="checker-section">
+      <div class="section-header">
+        <h2>🔍 Quick Text Check</h2>
+        <div class="section-subtitle">Paste your text for instant grammar check</div>
+      </div>
+      
+      <div class="input-container">
+        <textarea 
+          id="textInput" 
+          placeholder="Type or paste your text here for grammar and fluency checking..."
+          maxlength="5000"
+        ></textarea>
+        <div class="input-footer">
+          <span class="char-count" id="charCount">0/5000</span>
+          <div class="input-actions">
+            <button class="btn-secondary" id="clearBtn">
+              <span class="btn-icon">🗑️</span>
+              Clear
+            </button>
+            <button class="btn-primary" id="checkBtn">
+              <span class="btn-icon">✨</span>
+              <span class="btn-text">Check Grammar</span>
+              <div class="btn-loader"></div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section" id="resultsSection" style="display: none;">
+      <div class="section-header">
+        <h2>📋 Results</h2>
+        <div class="results-summary" id="resultsSummary"></div>
+      </div>
+      <div class="results-container" id="resultsContainer">
+        <!-- Results will be populated here -->
+      </div>
+      <div class="results-actions">
+        <button class="btn-outline" id="copyBtn">
+          <span class="btn-icon">📄</span>
+          Copy Corrected Text
+        </button>
+        <button class="btn-outline" id="downloadBtn">
+          <span class="btn-icon">💾</span>
+          Download Text
+        </button>
+      </div>
+    </section>
+
+    <!-- Settings Section -->
+    <section class="settings-section">
+      <div class="section-header">
+        <h2>⚙️ Settings</h2>
+      </div>
+      
+      <div class="settings-grid">
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="autoCheck">Auto-check while typing</label>
+            <span class="setting-desc">Automatically check grammar as you type</span>
+          </div>
+          <div class="toggle-switch">
+            <input type="checkbox" id="autoCheck" checked>
+            <label for="autoCheck" class="toggle-label"></label>
+          </div>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="showNotifications">Show notifications</label>
+            <span class="setting-desc">Display notifications for grammar issues</span>
+          </div>
+          <div class="toggle-switch">
+            <input type="checkbox" id="showNotifications" checked>
+            <label for="showNotifications" class="toggle-label"></label>
+          </div>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="languageSelect">Language</label>
+            <span class="setting-desc">Choose your preferred language</span>
+          </div>
+          <select id="languageSelect" class="setting-select">
+            <option value="en-US">English (US)</option>
+            <option value="en-GB">English (UK)</option>
+            <option value="en-CA">English (Canada)</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Action Buttons -->
+    <section class="actions-section">
+      <button class="btn-action" id="openWebsiteBtn">
+        <span class="btn-icon">🌐</span>
+        <div class="btn-content">
+          <span class="btn-title">Visit WriteRight Website</span>
+          <span class="btn-subtitle">More features and tools</span>
+        </div>
+      </button>
+      
+      <button class="btn-action" id="feedbackBtn">
+        <span class="btn-icon">💬</span>
+        <div class="btn-content">
+          <span class="btn-title">Send Feedback</span>
+          <span class="btn-subtitle">Help us improve WriteRight</span>
+        </div>
+      </button>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="popup-footer">
+    <div class="footer-content">
+      <span class="footer-text">Powered by LanguageTool API</span>
+      <div class="footer-links">
+        <a href="#" class="footer-link">Privacy</a>
+        <a href="#" class="footer-link">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Loading Overlay -->
+  <!-- <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner">
+      <div class="spinner-ring"></div>
+      <div class="spinner-ring"></div>
+      <div class="spinner-ring"></div>
+    </div>
+    <p class="loading-text">Checking grammar...</p>
+  </div> -->
+
+  <!-- Toast Notifications -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="popup.js" defer></script>
+</body>
+</html>
