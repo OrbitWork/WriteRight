@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WriteRight - Settings</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+            color: #333;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+        
+        .settings-container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .setting-group {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .setting-group:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .setting-group h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background-color 0.2s;
+        }
+        
+        .setting-item:hover {
+            background-color: #f8f9ff;
+        }
+        
+        .setting-info {
+            flex: 1;
+        }
+        
+        .setting-label {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .setting-description {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .setting-control {
+            margin-left: 20px;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 24px;
+            background: #ddd;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .toggle-switch.active {
+            background: #667eea;
+        }
+        
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .toggle-switch.active::after {
+            transform: translateX(26px);
+        }
+        
+        select, input[type="number"], input[type="text"] {
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        select:focus, input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .color-picker {
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .save-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            float: right;
+        }
+        
+        .save-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(102, 126, 234, 0.3);
+        }
+        
+        .save-status {
+            color: #28a745;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.3s;
+            margin-right: 20px;
+            line-height: 44px;
+        }
+        
+        .save-status.show {
+            opacity: 1;
+        }
+        
+        .reset-link {
+            color: #dc3545;
+            text-decoration: none;
+            font-size: 14px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        
+        .reset-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>⚡ WriteRight</h1>
+        <p>Customize your writing assistant experience</p>
+    </div>
+
+    <div class="settings-container">
+        <!-- Grammar & Spelling Settings -->
+        <div class="setting-group">
+            <h3>📝 Grammar & Spelling</h3>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-label">Enable Grammar Check</div>
+                    <div class="setting-description">Automatically detect and highlight grammar errors</div>
+                </div>
+                <div class="setting-control">
+                    <div class="toggle-switch active" id="grammarCheck"></div>
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-label">Enable Spell Check</div>
+                    <div class="setting-description">Highlight misspelled words as you type</div>
+                </div>
+                <div class="setting-control">
+                    <div class="toggle-switch active" id="spellCheck"></div>
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-label">Check Frequency</div>
+                    <div class="setting-description">How often to check for errors while typing</div>
+                </div>
+                <div class="setting-control">
+                    <select id="checkFrequency">
+                        <option value="realtime">Real-time</option>
+                        <option value="delayed">After pause (500ms)</option>
+                        <option value="onblur">On field exit</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Visual Settings -->
+        <div class="setting-group">
+            <h3>🎨 Visual Appearance</h3>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-label">Error Highlight Color</div>
+                    <div class="setting-description">Color used to highlight grammar errors</div>
+                </div>
+                <div class="setting-control">
+                    <input type="color" class="color-picker" id="errorColor" value="#ff4444">
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-label">Suggestion Highlight Color</div>
+                    <div class="setting-description">Color used to highlight suggestions</div>
+                </div>
+                <div class="setting-control">
+                    <input type="color" class="color-picker" id="suggestionColor" value="#4444ff">
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-label">Show Tooltip</div>
+                    <div class="setting-description">Display helpful tooltips on hover</div>
+                </div>
+                <div class="setting-control">
+                    <div class="toggle-switch active" id="showTooltip"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Behavior Settings -->
+        <div class="setting-group">
+            <h3>⚙️ Behavior</h3>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-label">Auto-correction</div>
+                    <div class="setting-description">Automatically fix common typos and errors</div>
+                </div>
+                <div class="setting-control">
+                    <div class="toggle-switch" id="autoCorrect"></div>
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-label">Confidence Threshold</div>
+                    <div class="setting-description">Minimum confidence level for suggestions (0-100)</div>
+                </div>
+                <div class="setting-control">
+                    <input type="number" id="confidenceThreshold" min="0" max="100" value="75">
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-label">Language</div>
+                    <div class="setting-description">Primary language for grammar checking</div>
+                </div>
+                <div class="setting-control">
+                    <select id="language">
+                        <option value="en-US">English (US)</option>
+                        <option value="en-GB">English (UK)</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Website Settings -->
+        <div class="setting-group">
+            <h3>🌐 Website Settings</h3>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-label">Exclude Websites</div>
+                    <div class="setting-description">Comma-separated list of domains to exclude</div>
+                </div>
+                <div class="setting-control">
+                    <input type="text" id="excludedSites" placeholder="example.com, site.org" style="width: 200px;">
+                </div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-label">Work on Password Fields</div>
+                    <div class="setting-description">Enable grammar check in password fields</div>
+                </div>
+                <div class="setting-control">
+                    <div class="toggle-switch" id="checkPasswords"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Save Button -->
+        <div style="text-align: right; margin-top: 30px;">
+            <span class="save-status" id="saveStatus">Settings saved!</span>
+            <button class="save-button" id="saveButton">Save Settings</button>
+        </div>
+        
+        <a href="#" class="reset-link" id="resetSettings">Reset to defaults</a>
+    </div>
+
+    <script>
+        // Load saved settings
+        function loadSettings() {
+            chrome.storage.sync.get({
+                grammarCheck: true,
+                spellCheck: true,
+                checkFrequency: 'delayed',
+                errorColor: '#ff4444',
+                suggestionColor: '#4444ff',
+                showTooltip: true,
+                autoCorrect: false,
+                confidenceThreshold: 75,
+                language: 'en-US',
+                excludedSites: '',
+                checkPasswords: false
+            }, function(items) {
+                // Set toggle switches
+                document.getElementById('grammarCheck').classList.toggle('active', items.grammarCheck);
+                document.getElementById('spellCheck').classList.toggle('active', items.spellCheck);
+                document.getElementById('showTooltip').classList.toggle('active', items.showTooltip);
+                document.getElementById('autoCorrect').classList.toggle('active', items.autoCorrect);
+                document.getElementById('checkPasswords').classList.toggle('active', items.checkPasswords);
+                
+                // Set other controls
+                document.getElementById('checkFrequency').value = items.checkFrequency;
+                document.getElementById('errorColor').value = items.errorColor;
+                document.getElementById('suggestionColor').value = items.suggestionColor;
+                document.getElementById('confidenceThreshold').value = items.confidenceThreshold;
+                document.getElementById('language').value = items.language;
+                document.getElementById('excludedSites').value = items.excludedSites;
+            });
+        }
+
+        // Save settings
+        function saveSettings() {
+            const settings = {
+                grammarCheck: document.getElementById('grammarCheck').classList.contains('active'),
+                spellCheck: document.getElementById('spellCheck').classList.contains('active'),
+                checkFrequency: document.getElementById('checkFrequency').value,
+                errorColor: document.getElementById('errorColor').value,
+                suggestionColor: document.getElementById('suggestionColor').value,
+                showTooltip: document.getElementById('showTooltip').classList.contains('active'),
+                autoCorrect: document.getElementById('autoCorrect').classList.contains('active'),
+                confidenceThreshold: parseInt(document.getElementById('confidenceThreshold').value),
+                language: document.getElementById('language').value,
+                excludedSites: document.getElementById('excludedSites').value,
+                checkPasswords: document.getElementById('checkPasswords').classList.contains('active')
+            };
+
+            chrome.storage.sync.set(settings, function() {
+                // Show save confirmation
+                const status = document.getElementById('saveStatus');
+                status.classList.add('show');
+                setTimeout(() => status.classList.remove('show'), 2000);
+                
+                // Notify content scripts of settings change
+                chrome.tabs.query({}, function(tabs) {
+                    tabs.forEach(tab => {
+                        chrome.tabs.sendMessage(tab.id, {
+                            action: 'settingsUpdated',
+                            settings: settings
+                        }).catch(() => {}); // Ignore errors for inactive tabs
+                    });
+                });
+            });
+        }
+
+        // Toggle switches
+        document.querySelectorAll('.toggle-switch').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+
+        // Save button
+        document.getElementById('saveButton').addEventListener('click', saveSettings);
+
+        // Reset settings
+        document.getElementById('resetSettings').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (confirm('Are you sure you want to reset all settings to defaults?')) {
+                chrome.storage.sync.clear(function() {
+                    loadSettings();
+                    saveSettings();
+                });
+            }
+        });
+
+        // Auto-save on certain changes
+        document.getElementById('errorColor').addEventListener('change', saveSettings);
+        document.getElementById('suggestionColor').addEventListener('change', saveSettings);
+
+        // Load settings on page load
+        document.addEventListener('DOMContentLoaded', loadSettings);
+    </script>
+</body>
+</html>
