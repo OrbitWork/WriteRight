@@ -9,4 +9,6 @@ Built for students, professionals, and content creators to write smarter and fas
 - Summarization & paraphrasing
 - Simple & user-friendly interface
 
+## File structure
+
 ---
